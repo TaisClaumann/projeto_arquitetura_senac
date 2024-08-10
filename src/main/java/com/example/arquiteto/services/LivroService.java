@@ -12,8 +12,8 @@ public class LivroService {
     @Autowired
     private LivroRepository livroRepository;
 
-    public Livro salvar(LivroDto livro) {
-        return livroRepository.save(new Livro(livro));
-    }
+//    public Livro salvar(LivroDto livro) {
+//        return livroRepository.save(new Livro(livro));
+//    }
 
 }
