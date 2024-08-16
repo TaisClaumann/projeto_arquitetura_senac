@@ -15,17 +15,17 @@ public class LivroDto {
 
     private Long id;
     private String nome;
-    private List<AutorDto> autor;
-    private CategoriaDto categoria;
+    private List<AutorDto> autores;
+    private List<CategoriaDto> categorias;
     private String editora;
     private Integer quantidade;
 
-//    public LivroDto(Livro livro) {
-//        this.id = livro.getId();
-//        this.nome = livro.getNome();
-//        this.autor = new AutorDto(livro.getAutor());
-//        this.categoria = new CategoriaDto(livro.getCategoria());
-//        this.editora = livro.getEditora();
-//        this.quantidade = livro.getQuantidade();
-//    }
+    public LivroDto(Livro livro) {
+        this.id = livro.getId();
+        this.nome = livro.getNome();
+        this.autores = livro.getAutores().stream().map(AutorDto::new).toList();
+        this.categorias = livro.getCategorias().stream().map(CategoriaDto::new).toList();
+        this.editora = livro.getEditora();
+        this.quantidade = livro.getQuantidade();
+    }
 }

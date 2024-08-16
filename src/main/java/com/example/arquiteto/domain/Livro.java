@@ -32,12 +32,12 @@ public class Livro {
     private String editora;
     private Integer quantidade;
 
-//    public Livro(LivroDto livro) {
-//        this.id = livro.getId();
-//        this.nome = livro.getNome();
-//        this.autores = livro.get
-//        this.categoria = new Categoria(livro.getCategoria());
-//        this.editora = livro.getEditora();
-//        this.quantidade = livro.getQuantidade();
-//    }
+    public Livro(LivroDto livro) {
+        this.id = livro.getId();
+        this.nome = livro.getNome();
+        this.autores = livro.getAutores().stream().map(Autor::new).toList();
+        this.categorias = livro.getCategorias().stream().map(Categoria::new).toList();
+        this.editora = livro.getEditora();
+        this.quantidade = livro.getQuantidade();
+    }
 }
