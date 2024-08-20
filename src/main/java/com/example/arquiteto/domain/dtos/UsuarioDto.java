@@ -23,7 +23,7 @@ public class UsuarioDto {
         this.id = usuario.getId();
         this.nome = usuario.getNome();
         this.cpf = usuario.getCpf();
-        this.dataNascimento = DataUtils.localDateToString(usuario.getDataNascimento());
+        this.dataNascimento = usuario.getDataNascimento();
         this.ativo = usuario.isAtivo();
     }
 }

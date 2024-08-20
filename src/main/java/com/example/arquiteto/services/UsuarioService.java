@@ -18,6 +18,7 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public UsuarioDto salvar(Usuario usuario) {
+        usuario.setAtivo(true);
         return new UsuarioDto(usuarioRepository.save(usuario));
     }
 

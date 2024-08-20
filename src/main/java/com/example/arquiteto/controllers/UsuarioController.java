@@ -1,6 +1,7 @@
 package com.example.arquiteto.controllers;
 
 import com.example.arquiteto.domain.Usuario;
+import com.example.arquiteto.domain.dtos.LoginDto;
 import com.example.arquiteto.domain.dtos.UsuarioDto;
 import com.example.arquiteto.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class UsuarioController {
     @GetMapping
     public List<UsuarioDto> buscarTodos() {
         return usuarioService.buscarTodos();
+    }
+
+    @PostMapping("/login")
+    public void logar(@RequestBody LoginDto loginDto) {
+        usuarioService.logar(loginDto);
     }
 }

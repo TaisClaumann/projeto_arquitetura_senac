@@ -4,10 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -25,7 +22,8 @@ public class Usuario {
     private String email;
     private String senha;
     private String cpf;
-    private LocalDate dataNascimento;
+    private String dataNascimento;
+
     private boolean ativo;
 
 }
