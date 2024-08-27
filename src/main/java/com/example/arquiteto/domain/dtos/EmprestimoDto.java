@@ -4,7 +4,6 @@ import com.example.arquiteto.Utils.DataUtils;
 import com.example.arquiteto.domain.Emprestimo;
 import com.example.arquiteto.domain.Livro;
 import com.example.arquiteto.domain.Usuario;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +24,8 @@ public class EmprestimoDto {
 
     public EmprestimoDto(Emprestimo emprestimo) {
         this.id = emprestimo.getId();
-        this.usuario = emprestimo.getUsuario_emprestimo();
-        this.livro = emprestimo.getLivro_emprestimo();
+        this.usuario = emprestimo.getUsuarioEmprestimo();
+        this.livro = emprestimo.getLivroEmprestimo();
         this.dataSaida = DataUtils.localDateToString(emprestimo.getDataSaida());
         this.status = emprestimo.isStatus();
     }

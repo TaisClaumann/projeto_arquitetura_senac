@@ -1,17 +1,12 @@
 package com.example.arquiteto.domain;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 
 @Entity
@@ -19,8 +14,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Emprestimo
-{
+public class Emprestimo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,18 +24,8 @@ public class Emprestimo
     private boolean status;
 
     @ManyToOne(cascade= CascadeType.REFRESH)
-    public Usuario usuario_emprestimo;
-
+    public Usuario usuarioEmprestimo;
 
     @ManyToOne(cascade= CascadeType.REFRESH)
-    public Livro livro_emprestimo;
-
-    public Emprestimo(Emprestimo emprestimo) {
-        this.id = emprestimo.getId();
-        this.dataSaida = emprestimo.getDataSaida();
-        this.dataVencimento = emprestimo.getDataVencimento();
-        this.status = emprestimo.isStatus();
-        this.usuario_emprestimo = emprestimo.getUsuario_emprestimo();
-        this.livro_emprestimo = emprestimo.getLivro_emprestimo();
-    }
+    public Livro livroEmprestimo;
 }
