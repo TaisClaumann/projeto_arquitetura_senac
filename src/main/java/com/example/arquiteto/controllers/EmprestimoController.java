@@ -16,7 +16,7 @@ import com.example.arquiteto.domain.dtos.EmprestimoDto;
 import com.example.arquiteto.services.EmprestimoService;
 
 @RestController
-@RequestMapping("/emprestimo")
+@RequestMapping("/emprestimos")
 public class EmprestimoController {
     
     @Autowired
