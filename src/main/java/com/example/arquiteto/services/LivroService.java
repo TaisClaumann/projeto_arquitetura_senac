@@ -37,6 +37,12 @@ public class LivroService {
                 .toList();
     }
 
+    public List<LivroDto> buscarPorNomeCategoriaEAutor(String nome, String categoria, String autor) {
+        return livroRepository.findAllByNomeContainingAndCategoriasNomeContainingAndAutoresNomeContaining(nome, categoria, autor).stream()
+                .map(LivroDto::new)
+                .toList();
+    }
+
 //    public boolean isLivroDisponivel(Livro livro) {
 //        Integer emprestimosLivro = emprestimoService.listarQuantidadeEmprestimosPorLivro(livro.getId());
 //        return emprestimosLivro < livro.getQuantidade();

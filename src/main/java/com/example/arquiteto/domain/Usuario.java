@@ -28,7 +28,7 @@ public class Usuario {
     private boolean ativo;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "usuario_emprestimo")
+    @OneToMany(mappedBy = "usuarioEmprestimo")
     public List<Emprestimo> emprestimos;
 
 }
