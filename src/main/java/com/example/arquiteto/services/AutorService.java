@@ -15,8 +15,8 @@ public class AutorService {
     @Autowired
     private AutorRepository repository;
 
-    public AutorDto salvar(Autor autor) {
-        return new AutorDto(repository.save(autor));
+    public AutorDto salvar(AutorDto autorDto) {
+        return new AutorDto(repository.save(new Autor(autorDto)));
     }
 
     public AutorDto buscarPorId(Long id) {
@@ -27,10 +27,10 @@ public class AutorService {
     public AutorDto atualizar(Long id, AutorDto autorDto) {
         buscarPorId(id);
         autorDto.setId(id);
-        return new AutorDto(repository.save(autorDto));
+        return new AutorDto(repository.save(new Autor(autorDto)));
     }
 
-    public List<AutorDto> buscarTodos() {
+    public List<AutorDto> listar() {
         return repository.findAll().stream().map(AutorDto::new).toList();
     }
 }
