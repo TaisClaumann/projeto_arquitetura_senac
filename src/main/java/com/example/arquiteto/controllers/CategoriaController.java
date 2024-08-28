@@ -29,7 +29,6 @@ public class CategoriaController {
         return categoriaService.buscarPorId(id);
     }
 
-
     @GetMapping
     public List<CategoriaDto> listar() {
         return categoriaService.listar();
