@@ -1,5 +1,6 @@
 package com.example.arquiteto.domain;
 
+import com.example.arquiteto.enums.StatusEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +22,9 @@ public class Emprestimo {
     private Long id;
     private LocalDate dataSaida;
     private LocalDate dataVencimento;
-    private boolean status;
+
+    @Enumerated(EnumType.STRING)
+    private StatusEnum status;
 
     @ManyToOne(cascade= CascadeType.REFRESH)
     public Usuario usuarioEmprestimo;
