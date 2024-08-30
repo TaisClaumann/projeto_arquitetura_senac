@@ -34,4 +34,9 @@ public class AutorController {
     public List<AutorDto> listar() {
         return autorService.listar();
     }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable("id") Long id) {
+        autorService.excluir(id);
+    }
 }

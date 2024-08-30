@@ -42,4 +42,9 @@ public class LivroController {
     public List<LivroDto> listar() {
         return livroService.listar();
     }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable("id") Long id) {
+        livroService.excluir(id);
+    }
 }

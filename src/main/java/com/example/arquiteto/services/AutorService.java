@@ -33,4 +33,8 @@ public class AutorService {
     public List<AutorDto> listar() {
         return repository.findAll().stream().map(AutorDto::new).toList();
     }
+
+    public void excluir(Long id) {
+        if (repository.existsById(id)) repository.deleteById(id);
+    }
 }

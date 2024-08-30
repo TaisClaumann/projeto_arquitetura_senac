@@ -43,6 +43,10 @@ public class LivroService {
                 .toList();
     }
 
+    public void excluir(Long id) {
+        if (livroRepository.existsById(id)) livroRepository.deleteById(id);
+    }
+
 //    public boolean isLivroDisponivel(Livro livro) {
 //        Integer emprestimosLivro = emprestimoService.listarQuantidadeEmprestimosPorLivro(livro.getId());
 //        return emprestimosLivro < livro.getQuantidade();
