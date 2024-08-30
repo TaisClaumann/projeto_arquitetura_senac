@@ -1,7 +1,5 @@
 package com.example.arquiteto.domain;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,8 +22,8 @@ public class Emprestimo
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate dataSaida;
-    private LocalDate dataVencimento;
+    private String dataSaida;
+    private String dataVencimento;
     private boolean status;
 
     @ManyToOne(cascade= CascadeType.REFRESH)

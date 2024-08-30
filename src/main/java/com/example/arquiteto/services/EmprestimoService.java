@@ -20,7 +20,6 @@ public class EmprestimoService {
         return new EmprestimoDto(emprestimoRepository.save(emprestimo));
     }
 
-    //TO DO: FIQUEI COM PREGUIÇA DE MUDAR A PESQUISA PELO NOME DO LIVRO
     public EmprestimoDto buscarPorId(Long livro) {
         return new EmprestimoDto(emprestimoRepository.findById(livro)
                 .orElseThrow(() -> new RegistroNaoEncontradoException("Livro não encontrado! ID: " + livro)));

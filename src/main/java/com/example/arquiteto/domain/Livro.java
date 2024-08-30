@@ -3,6 +3,7 @@ package com.example.arquiteto.domain;
 import java.util.List;
 
 import com.example.arquiteto.domain.dtos.LivroDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,6 +39,7 @@ public class Livro {
     @JoinTable(name = "livro_categoria", joinColumns = @JoinColumn(name = "livro_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private List<Categoria> categorias;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "livro_emprestimo")
     private List<Emprestimo> emprestimos;
     

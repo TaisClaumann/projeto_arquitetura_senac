@@ -1,6 +1,5 @@
 package com.example.arquiteto.domain.dtos;
 
-import com.example.arquiteto.Utils.DataUtils;
 import com.example.arquiteto.domain.Emprestimo;
 import com.example.arquiteto.domain.Livro;
 import com.example.arquiteto.domain.Usuario;
@@ -27,7 +26,8 @@ public class EmprestimoDto {
         this.id = emprestimo.getId();
         this.usuario = emprestimo.getUsuario_emprestimo();
         this.livro = emprestimo.getLivro_emprestimo();
-        this.dataSaida = DataUtils.localDateToString(emprestimo.getDataSaida());
+        this.dataSaida = emprestimo.getDataSaida();
+        this.dataVencimento = emprestimo.getDataVencimento();
         this.status = emprestimo.isStatus();
     }
 }
