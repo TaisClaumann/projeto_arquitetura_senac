@@ -36,6 +36,11 @@ public class EmprestimoController {
         return emprestimoService.buscarTodos();
     }
 
+    @GetMapping("/usuario/{usuarioId}")
+    public List<EmprestimoDto> buscarPorUsuario(@PathVariable("usuarioId") Long usuarioId) {
+        return emprestimoService.buscarPorUsuario(usuarioId);
+    }
+
     @DeleteMapping("/{id}")
     public void excluir(@PathVariable("id") Long id) {
         emprestimoService.excluir(id);
