@@ -27,7 +27,7 @@ public class EmprestimoController {
         return emprestimoService.salvar(emprestimo);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public EmprestimoDto atualizar(@PathVariable("id") Long id, @RequestBody Emprestimo emprestimo) {
         return emprestimoService.atualizar(id, emprestimo);
     }
@@ -37,7 +37,7 @@ public class EmprestimoController {
         return emprestimoService.buscarPorId(id);
     }
 
-    @GetMapping
+    @GetMapping("/lista")
     public List<EmprestimoDto> buscarTodos() {
         return emprestimoService.buscarTodos();
     }

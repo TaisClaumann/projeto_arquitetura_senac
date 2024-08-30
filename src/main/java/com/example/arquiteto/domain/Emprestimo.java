@@ -19,8 +19,8 @@ public class Emprestimo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate dataSaida;
-    private LocalDate dataVencimento;
+    private String dataSaida;
+    private String dataVencimento;
     private boolean status;
 
     @ManyToOne(cascade= CascadeType.REFRESH)

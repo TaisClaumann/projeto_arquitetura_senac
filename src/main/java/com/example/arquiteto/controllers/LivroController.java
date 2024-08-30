@@ -1,8 +1,6 @@
 package com.example.arquiteto.controllers;
 
-import com.example.arquiteto.domain.Usuario;
 import com.example.arquiteto.domain.dtos.LivroDto;
-import com.example.arquiteto.domain.dtos.UsuarioDto;
 import com.example.arquiteto.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
