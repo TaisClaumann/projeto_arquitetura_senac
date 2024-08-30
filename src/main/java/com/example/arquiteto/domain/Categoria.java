@@ -1,6 +1,7 @@
 package com.example.arquiteto.domain;
 
 import com.example.arquiteto.domain.dtos.CategoriaDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Categoria {
     private Long id;
     private String nome;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "categorias")
     private List<Livro> livros;
 
