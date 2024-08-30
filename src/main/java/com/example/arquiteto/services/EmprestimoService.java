@@ -35,4 +35,8 @@ public class EmprestimoService {
     public List<EmprestimoDto> buscarTodos() {
         return emprestimoRepository.findAll().stream().map(EmprestimoDto::new).toList();
     }
+
+    public void excluir(Long id) {
+        if (emprestimoRepository.existsById(id)) emprestimoRepository.deleteById(id);
+    }
 }

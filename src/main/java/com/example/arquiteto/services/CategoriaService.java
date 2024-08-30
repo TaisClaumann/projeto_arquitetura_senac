@@ -8,9 +8,11 @@ import com.example.arquiteto.repositories.AutorRepository;
 import com.example.arquiteto.repositories.CategoriaRepository;
 import com.example.arquiteto.services.exceptions.RegistroNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoriaService {
 
     @Autowired
@@ -33,5 +35,9 @@ public class CategoriaService {
 
     public List<CategoriaDto> listar() {
         return repository.findAll().stream().map(CategoriaDto::new).toList();
+    }
+
+    public void excluir(Long id) {
+        if (repository.existsById(id)) repository.deleteById(id);
     }
 }
