@@ -5,7 +5,6 @@ import com.example.arquiteto.domain.dtos.LoginDto;
 import com.example.arquiteto.domain.dtos.UsuarioDto;
 import com.example.arquiteto.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
