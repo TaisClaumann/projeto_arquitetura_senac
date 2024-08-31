@@ -1,12 +1,11 @@
 package com.example.arquiteto.repositories;
 
+import com.example.arquiteto.domain.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.arquiteto.domain.Reserva;
-
 @Repository
-public interface ReservaRepository extends JpaRepository<Reserva, Integer> {
+public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
     
 } 

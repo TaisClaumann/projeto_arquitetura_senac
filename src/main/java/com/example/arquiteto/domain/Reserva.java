@@ -1,15 +1,12 @@
 package com.example.arquiteto.domain;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -20,15 +17,14 @@ public class Reserva {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private int prioridade;
-
-
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    private Usuario usuario_reserva;
+    private Long id;
+    private LocalDate data;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    private Livro livro_reserva;
+    private Usuario usuarioReserva;
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private Livro livroReserva;
     
 
     

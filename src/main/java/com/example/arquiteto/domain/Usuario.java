@@ -32,7 +32,7 @@ public class Usuario {
     public List<Emprestimo> emprestimos;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "usuario_reserva")
+    @OneToMany(mappedBy = "usuarioReserva")
     public List<Reserva> reservas;
 
 }

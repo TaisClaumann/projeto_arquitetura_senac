@@ -1,50 +1,38 @@
 package com.example.arquiteto.services;
 
 
-import java.util.List;
-
+import com.example.arquiteto.domain.Reserva;
+import com.example.arquiteto.domain.dtos.ReservaDto;
+import com.example.arquiteto.repositories.ReservaRepository;
+import com.example.arquiteto.services.exceptions.RegistroNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.arquiteto.domain.Reserva;
-import com.example.arquiteto.repositories.ReservaRepository;
+import java.util.List;
 
 @Service
 public class ReservaService {
     
     @Autowired
-    ReservaRepository repository;
+    private ReservaRepository reservaRepository;
 
-    public String cadastro(Reserva reserva){
-
-        repository.save(reserva);
-
-        return "RESERVADO!";
+    public ReservaDto salvar(Reserva reserva) {
+        return new ReservaDto(reservaRepository.save(reserva));
     }
 
-    public List<Reserva> listar(){
-
-        List<Reserva> lista = repository.findAll();
-
-        return lista;
-        
+    public List<ReservaDto> listar() {
+        return reservaRepository.findAll().stream().map(ReservaDto::new).toList();
     }
 
-    public String excluir(int id){  
-        Reserva reserva = repository.findById(id).orElse(null);
-
-        if (reserva != null) {
-            repository.delete(reserva);
-            return "Reserva excluída";
-        }
-
-        return "Reserva não encontrada";
+    public void excluir(Long id) {
+        buscarPorId(id);
+        reservaRepository.deleteById(id);
     }
 
      public ResponseEntity<Reserva> listaReservas(int id){
-        Reserva reservas = repository.findById(id).orElse(null);
+        Reserva reservas = reservaRepository.findById(id).orElse(null);
 
         if (reservas != null){
             return new ResponseEntity<>(reservas, HttpStatus.OK);
@@ -54,4 +42,8 @@ public class ReservaService {
 
     }
 
+    public ReservaDto buscarPorId(Long id) {
+        return new ReservaDto(reservaRepository.findById(id)
+                .orElseThrow(() -> new RegistroNaoEncontradoException("Reserva não encontrada! ID: " + id)));
+    }
 }

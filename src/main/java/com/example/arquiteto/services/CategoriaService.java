@@ -35,6 +35,6 @@ public class CategoriaService {
     }
 
     public void excluir(Long id) {
-        if (repository.existsById(id)) repository.deleteById(id);
+        if (categoriaRepository.existsById(id)) categoriaRepository.deleteById(id);
     }
 }
