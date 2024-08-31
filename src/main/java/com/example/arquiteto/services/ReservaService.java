@@ -39,4 +39,8 @@ public class ReservaService {
         reserva.setId(id);
         return salvar(reserva);
     }
+
+    public List<ReservaDto> buscarReservasPorUsuario(Long usuarioId) {
+        return reservaRepository.findByUsuarioReservaId(usuarioId).stream().map(ReservaDto::new).toList();
+    }
 }
