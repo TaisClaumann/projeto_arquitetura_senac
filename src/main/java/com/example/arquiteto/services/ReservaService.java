@@ -15,8 +15,14 @@ public class ReservaService {
     
     @Autowired
     private ReservaRepository reservaRepository;
+    @Autowired
+    private UsuarioService usuarioService;
+    @Autowired
+    private LivroService livroService;
 
     public ReservaDto salvar(Reserva reserva) {
+        usuarioService.buscarPorId(reserva.getUsuarioReserva().getId());
+        livroService.buscarPorId(reserva.getLivroReserva().getId());
         return new ReservaDto(reservaRepository.save(reserva));
     }
 
