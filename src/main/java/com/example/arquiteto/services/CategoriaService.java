@@ -33,4 +33,8 @@ public class CategoriaService {
     public List<CategoriaDto> listar() {
         return categoriaRepository.findAll().stream().map(CategoriaDto::new).toList();
     }
+
+    public void excluir(Long id) {
+        if (repository.existsById(id)) repository.deleteById(id);
+    }
 }

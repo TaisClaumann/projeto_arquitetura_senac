@@ -32,10 +32,8 @@ public class LivroController {
     }
 
     @GetMapping("/buscar")
-    public List<LivroDto> buscarPorNomeCategoriaEAutor(@RequestParam("nome") String nome,
-                                                       @RequestParam("categoria") String categoria,
-                                                       @RequestParam("autor") String autor) {
-        return livroService.buscarPorNomeCategoriaEAutor(nome, categoria, autor);
+    public List<LivroDto> buscarPorNome(@RequestParam("nome") String nome) {
+        return livroService.buscarPorNome(nome);
     }
 
     @GetMapping

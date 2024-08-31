@@ -33,4 +33,9 @@ public class CategoriaController {
     public List<CategoriaDto> listar() {
         return categoriaService.listar();
     }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable("id") Long id) {
+        categoriaService.excluir(id);
+    }
 }
