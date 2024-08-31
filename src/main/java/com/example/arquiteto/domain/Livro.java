@@ -35,7 +35,7 @@ public class Livro {
     private List<Emprestimo> emprestimos;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "livro_reserva")
+    @OneToMany(mappedBy = "livroReserva")
     private List<Reserva> reservas;
     
     private String editora;
