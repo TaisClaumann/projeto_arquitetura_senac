@@ -1,12 +1,13 @@
 package com.example.arquiteto.controllers;
 
-import com.example.arquiteto.domain.Emprestimo;
-import com.example.arquiteto.domain.dtos.EmprestimoDto;
-import com.example.arquiteto.services.EmprestimoService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import com.example.arquiteto.domain.Emprestimo;
+import com.example.arquiteto.domain.dtos.EmprestimoDto;
+import com.example.arquiteto.services.EmprestimoService;
 
 @RestController
 @RequestMapping("/emprestimos")
@@ -38,5 +39,10 @@ public class EmprestimoController {
     @GetMapping("/usuario/{usuarioId}")
     public List<EmprestimoDto> buscarPorUsuario(@PathVariable("usuarioId") Long usuarioId) {
         return emprestimoService.buscarPorUsuario(usuarioId);
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable("id") Long id) {
+        emprestimoService.excluir(id);
     }
 }

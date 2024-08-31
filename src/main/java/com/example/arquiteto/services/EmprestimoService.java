@@ -18,8 +18,10 @@ public class EmprestimoService {
     
     @Autowired
     private EmprestimoRepository emprestimoRepository;
+
     @Autowired
     private UsuarioService usuarioService;
+
     @Autowired
     private LivroService livroService;
 
@@ -31,7 +33,7 @@ public class EmprestimoService {
         if (Objects.nonNull(emprestimo.getId())) emprestimo.setStatus(StatusEnum.ABERTO);
         return new EmprestimoDto(emprestimoRepository.save(emprestimo));
     }
-    
+
     public EmprestimoDto buscarPorId(Long livro) {
         return new EmprestimoDto(emprestimoRepository.findById(livro)
                 .orElseThrow(() -> new RegistroNaoEncontradoException("Livro não encontrado! ID: " + livro)));
@@ -54,6 +56,10 @@ public class EmprestimoService {
         return emprestimoRepository.findAll().stream().map(EmprestimoDto::new).toList();
     }
 
+    public void excluir(Long id) {
+        if (emprestimoRepository.existsById(id)) emprestimoRepository.deleteById(id);
+    }
+
     public List<EmprestimoDto> buscarPorUsuario(Long usuarioId) {
         usuarioService.buscarPorId(usuarioId);
         return emprestimoRepository.findByUsuarioEmprestimoId(usuarioId).stream()
@@ -66,7 +72,7 @@ public class EmprestimoService {
         int qtdEmprestimosEmAberto = buscarEmprestimosEmAbertoPorLivro(livroId).size();
 
         if (qtdEmprestimosEmAberto == livro.getQuantidade()) {
-            throw new LivroIndisponivelException("Livro " + livro.getNome() + " indisponível para empréstimo");
+            throw new LivroIndisponivelException("O livro " + livro.getNome() + " esta indisponível para empréstimo");
         }
     }
 
