@@ -16,8 +16,13 @@ public class ReservaController {
     private ReservaService reservaService;
 
     @PostMapping
-    public ReservaDto salvar(Reserva reserva) {
+    public ReservaDto salvar(@RequestBody Reserva reserva) {
         return reservaService.salvar(reserva);
+    }
+
+    @PutMapping("/{id}")
+    public ReservaDto atualizar(@PathVariable("id") Long id, @RequestBody Reserva reserva) {
+        return reservaService.atualizar(id, reserva);
     }
 
     @GetMapping
