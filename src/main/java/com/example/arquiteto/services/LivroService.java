@@ -13,8 +13,14 @@ public class LivroService {
 
     @Autowired
     private LivroRepository livroRepository;
+    @Autowired
+    private AutorService autorService;
+    @Autowired
+    private CategoriaService categoriaService;
 
     public LivroDto salvar(LivroDto livro) {
+        livro.getAutores().forEach(autor -> autorService.buscarPorId(autor.getId()));
+        livro.getCategorias().forEach(categoria -> categoriaService.buscarPorId(categoria.getId()));
         return new LivroDto(livroRepository.save(new Livro(livro)));
     }
 
