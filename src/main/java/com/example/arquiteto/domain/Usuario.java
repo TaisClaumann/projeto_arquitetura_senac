@@ -31,4 +31,8 @@ public class Usuario {
     @OneToMany(mappedBy = "usuarioEmprestimo")
     public List<Emprestimo> emprestimos;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario_reserva")
+    public List<Reserva> reservas;
+
 }
