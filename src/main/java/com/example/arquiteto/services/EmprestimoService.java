@@ -18,8 +18,10 @@ public class EmprestimoService {
     
     @Autowired
     private EmprestimoRepository emprestimoRepository;
+
     @Autowired
     private UsuarioService usuarioService;
+
     @Autowired
     private LivroService livroService;
 
@@ -70,7 +72,7 @@ public class EmprestimoService {
         int qtdEmprestimosEmAberto = buscarEmprestimosEmAbertoPorLivro(livroId).size();
 
         if (qtdEmprestimosEmAberto == livro.getQuantidade()) {
-            throw new LivroIndisponivelException("Livro " + livro.getNome() + " indisponível para empréstimo");
+            throw new LivroIndisponivelException("O livro " + livro.getNome() + " esta indisponível para empréstimo");
         }
     }
 
