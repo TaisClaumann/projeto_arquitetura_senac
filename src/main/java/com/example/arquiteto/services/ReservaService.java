@@ -6,8 +6,6 @@ import com.example.arquiteto.domain.dtos.ReservaDto;
 import com.example.arquiteto.repositories.ReservaRepository;
 import com.example.arquiteto.services.exceptions.RegistroNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,17 +27,6 @@ public class ReservaService {
     public void excluir(Long id) {
         buscarPorId(id);
         reservaRepository.deleteById(id);
-    }
-
-     public ResponseEntity<Reserva> listaReservas(int id){
-        Reserva reservas = reservaRepository.findById(id).orElse(null);
-
-        if (reservas != null){
-            return new ResponseEntity<>(reservas, HttpStatus.OK);
-        }
-
-            return new ResponseEntity<>(reservas, HttpStatus.NOT_FOUND);
-
     }
 
     public ReservaDto buscarPorId(Long id) {

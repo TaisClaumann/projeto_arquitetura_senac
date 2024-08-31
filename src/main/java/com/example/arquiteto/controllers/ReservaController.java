@@ -4,7 +4,6 @@ import com.example.arquiteto.domain.Reserva;
 import com.example.arquiteto.domain.dtos.ReservaDto;
 import com.example.arquiteto.services.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class ReservaController {
     private ReservaService reservaService;
 
     @PostMapping
-    public ReservaDto cadastrar(Reserva reserva) {
+    public ReservaDto salvar(Reserva reserva) {
         return reservaService.salvar(reserva);
     }
 
@@ -31,8 +30,8 @@ public class ReservaController {
         reservaService.excluir(id);
     }
 
-    @GetMapping("/lista/{id}")
-    public ResponseEntity<Reserva> listar(@PathVariable("id") int id){
-        return reservaService.listaReservas(id);
+    @GetMapping("/{id}")
+    public ReservaDto buscarPorId(@PathVariable("id") Long id){
+        return reservaService.buscarPorId(id);
     }
 }
