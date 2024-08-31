@@ -1,19 +1,12 @@
 package com.example.arquiteto.controllers;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.example.arquiteto.domain.Emprestimo;
 import com.example.arquiteto.domain.dtos.EmprestimoDto;
 import com.example.arquiteto.services.EmprestimoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/emprestimos")
@@ -40,5 +33,10 @@ public class EmprestimoController {
     @GetMapping
     public List<EmprestimoDto> buscarTodos() {
         return emprestimoService.buscarTodos();
+    }
+
+    @GetMapping("/usuario/{usuarioId}")
+    public List<EmprestimoDto> buscarPorUsuario(@PathVariable("usuarioId") Long usuarioId) {
+        return emprestimoService.buscarPorUsuario(usuarioId);
     }
 }
