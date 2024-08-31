@@ -33,4 +33,10 @@ public class ReservaService {
         return new ReservaDto(reservaRepository.findById(id)
                 .orElseThrow(() -> new RegistroNaoEncontradoException("Reserva não encontrada! ID: " + id)));
     }
+
+    public ReservaDto atualizar(Long id, Reserva reserva) {
+        buscarPorId(id);
+        reserva.setId(id);
+        return salvar(reserva);
+    }
 }
