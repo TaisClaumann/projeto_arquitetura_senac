@@ -41,7 +41,7 @@ public class ReservaController {
     }
 
     @GetMapping("/usuario/{usuarioId}")
-    public List<ReservaDto> buscarPorUsuario(@RequestParam("usuarioId") Long usuarioId){
+    public List<ReservaDto> buscarPorUsuario(@PathVariable("usuarioId") Long usuarioId){
         return reservaService.buscarReservasPorUsuario(usuarioId);
     }
 }
